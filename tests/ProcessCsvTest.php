@@ -119,4 +119,32 @@ class ProcessCsvTest extends TestCase
         $detected = $objProcessCsv->detectMultiplePersons($string);
         $this->assertSame($detected, $result);
     }
+
+    public function testProcessCsvFile($csv_path)
+    {
+        $arrIntendedResult = [
+            [
+                'title' => 'Mr',
+                'first_name' => 'Bob',
+                'initial' => null,
+                'last_name' => 'Lawblaw'
+            ],
+            [
+                'title' => 'Mr',
+                'first_name' => null,
+                'initial' => null,
+                'last_name' => 'Smith'
+            ],
+            [
+                'title' => 'Mrs',
+                'first_name' => null,
+                'initial' => null,
+                'last_name' => 'Smith'
+            ]
+        ];
+
+        $objProcessCsv = new ProcessCsv();
+        $processed = $objProcessCsv->processCsvFile($csv_path);
+        $this->assertSame($processed, $arrIntendedResult);
+    }
 }
