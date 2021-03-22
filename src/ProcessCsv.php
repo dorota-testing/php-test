@@ -73,6 +73,32 @@ class ProcessCsv
   public function splitStringIntoMultiplePersons($string)
   {
     $arrReturn = [];
+    $arrExplode = explode(' ', $string);
+    //check where the position of 'and'
+    $key = array_search('and', $arrExplode);
+    if ($key == 0) {
+      $key = array_search('&', $arrExplode);
+    }
+    //case when 'and' is between titles
+    if ($key == 1) {
+      $title1 = $arrExplode[0];
+      $title2 = $arrExplode[2];
+      //case with husband's forename
+      if(isset($arrExplode[4])){
+        $first_name = $arrExplode[3];
+        $last_name = $arrExplode[4];
+        $arrReturn = [
+          trim($title1.' '.$first_name.' '.$last_name),
+          trim($title2.' '.$last_name)
+        ];
+      } else { // case with only surname
+        $last_name = $arrExplode[3];
+        $arrReturn = [
+          trim($title1.' '.$last_name),
+          trim($title2.' '.$last_name)
+        ];
+      }
+    }
     return $arrReturn;
   }
 }
