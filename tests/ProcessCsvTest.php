@@ -21,4 +21,23 @@ class ProcessCsvTest extends TestCase
         $arrFiveLines = array('line one', 'line two', 'line three', 'line four', 'line five');
         $this->assertSame($arrCSVfive, $arrFiveLines);
     }
+
+    /**
+     * This sets data for next test
+     */
+    public function getPersonStrings()
+    {
+        return [
+            [
+                'Mr John Smith', [
+                    'title' => 'Mr',
+                    'first_name' => 'John',
+                    'initial' => null,
+                    'last_name' => 'Smith'
+                ]
+            ]
+        ];
+    }
+
+    
 }
