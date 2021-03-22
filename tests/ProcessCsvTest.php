@@ -120,7 +120,7 @@ class ProcessCsvTest extends TestCase
         $this->assertSame($detected, $result);
     }
 
-    public function testProcessCsvFile($csv_path)
+    public function testProcessCsvFile()
     {
         $arrIntendedResult = [
             [
@@ -144,7 +144,7 @@ class ProcessCsvTest extends TestCase
         ];
 
         $objProcessCsv = new ProcessCsv();
-        $processed = $objProcessCsv->processCsvFile($csv_path);
+        $processed = $objProcessCsv->processCsvFile('tests/testFiles/peopleSample.csv');
         $this->assertSame($processed, $arrIntendedResult);
     }
 }
