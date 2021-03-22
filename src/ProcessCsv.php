@@ -70,7 +70,7 @@ class ProcessCsv
    *  @return array This returns array of two strings, each being one person string
    *  @param string - string with two person's data. Expected to contain word 'and' or '&'
    */
-  public function splitStringIntoMultiplePersons($string)
+  public function splitStringIntoTwoPersons($string)
   {
     $arrReturn = [];
     $arrExplode = explode(' ', $string);
@@ -111,7 +111,7 @@ class ProcessCsv
    *  @return bool This true if string is two people and false if one
    *  @param string - a string containing one or two people
    */
-  public function detectMultiplePersons(string $string){
+  public function detectTwoPersons(string $string){
     //check if contains 'and' or &
     $arrExplode = explode(' ', $string);
     $detected1 = in_array('and', $arrExplode);
@@ -128,6 +128,22 @@ class ProcessCsv
    *  @param string - path to the csv file (including file name)
    */
   public function processCsvFile(string $csv_path){
-
+    $arrReturn = [];
+    // get lines of the csv file
+    $arrCsv = $this->turnCsvIntoArrayOfLines($csv_path);
+    // process lines
+    foreach($arrCsv as $line){
+      // detect two people in line
+      $two = $this->detectTwoPersons($line);
+      if($two){
+        $arrTwo = $this->splitStringIntoTwoPersons($line);
+        foreach($arrTwo as $person){
+          $arrReturn[] = $this->splitStringIntoPersonArray($person);
+        }
+      } else {
+        $arrReturn[] = $this->splitStringIntoPersonArray($line);
+      }
+    }
+    return $arrReturn;
   }  
 }

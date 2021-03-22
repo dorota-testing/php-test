@@ -68,7 +68,7 @@ class ProcessCsvTest extends TestCase
     /**
      * This sets data for next test
      */
-    public function getMultiplePersonStrings()
+    public function getTwoPersonstrings()
     {
         return [
             [
@@ -80,12 +80,12 @@ class ProcessCsvTest extends TestCase
         ];
     }
     /**
-     * @dataProvider getMultiplePersonStrings
+     * @dataProvider getTwoPersonstrings
      */
-    public function testSplitStringIntoMultiplePersons(string $string, array $arrResult)
+    public function testSplitStringIntoTwoPersons(string $string, array $arrResult)
     {
         $objProcessCsv = new ProcessCsv();
-        $arrSplitMultiple = $objProcessCsv->splitStringIntoMultiplePersons($string);
+        $arrSplitMultiple = $objProcessCsv->splitStringIntoTwoPersons($string);
 
         $this->assertSame($arrSplitMultiple, $arrResult);
     }
@@ -113,10 +113,10 @@ class ProcessCsvTest extends TestCase
     /**
      * @dataProvider getCsvFileLine
      */
-    public function testDetectMultiplePersons(string $string, bool $result)
+    public function testDetectTwoPersons(string $string, bool $result)
     {
         $objProcessCsv = new ProcessCsv();
-        $detected = $objProcessCsv->detectMultiplePersons($string);
+        $detected = $objProcessCsv->detectTwoPersons($string);
         $this->assertSame($detected, $result);
     }
 
