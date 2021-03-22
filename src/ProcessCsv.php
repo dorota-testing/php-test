@@ -12,13 +12,15 @@ class ProcessCsv
   {
     $arrReturn = [];
     $file = new \SplFileObject($csv_path, "r");
+    $n = 0;
     while (!$file->eof()) {
+      $n++;
       // this returns line as array
       $arrLine = $file->fgetcsv();
       //this turns array to string and removes trailing whitespace
       $strLine = trim(implode(' ', $arrLine));
       //this skips empty lines
-      if ($strLine != '') {
+      if ($strLine != '' && $n !== 1) {
         $arrReturn[] = $strLine;
       }
     }
@@ -111,7 +113,8 @@ class ProcessCsv
    *  @return bool This true if string is two people and false if one
    *  @param string - a string containing one or two people
    */
-  public function detectTwoPersons(string $string){
+  public function detectTwoPersons(string $string)
+  {
     //check if contains 'and' or &
     $arrExplode = explode(' ', $string);
     $detected1 = in_array('and', $arrExplode);
@@ -121,23 +124,24 @@ class ProcessCsv
     } else {
       return false;
     }
-  } 
+  }
 
   /**
    *  @return array This returns array of arrays containing people's data
    *  @param string - path to the csv file (including file name)
    */
-  public function processCsvFile(string $csv_path){
+  public function processCsvFile(string $csv_path)
+  {
     $arrReturn = [];
     // get lines of the csv file
     $arrCsv = $this->turnCsvIntoArrayOfLines($csv_path);
     // process lines
-    foreach($arrCsv as $line){
+    foreach ($arrCsv as $line) {
       // detect two people in line
       $two = $this->detectTwoPersons($line);
-      if($two){
+      if ($two) {
         $arrTwo = $this->splitStringIntoTwoPersons($line);
-        foreach($arrTwo as $person){
+        foreach ($arrTwo as $person) {
           $arrReturn[] = $this->splitStringIntoPersonArray($person);
         }
       } else {
@@ -145,5 +149,5 @@ class ProcessCsv
       }
     }
     return $arrReturn;
-  }  
+  }
 }
