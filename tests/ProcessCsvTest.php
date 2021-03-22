@@ -38,6 +38,15 @@ class ProcessCsvTest extends TestCase
             ]
         ];
     }
+    /**
+     * @dataProvider getPersonStrings
+     */
+    public function testSplitStringIntoPersonArray(string $string, array $arrResult)
+    {
+        $objProcessCsv = new ProcessCsv();
+        $arrSplit = $objProcessCsv->splitStringIntoPersonArray($string);
 
-    
+        $this->assertSame($arrSplit, $arrResult);
+    }
+
 }
