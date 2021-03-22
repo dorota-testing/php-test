@@ -7,21 +7,14 @@ use Src\ProcessCsv;
 
 class ProcessCsvTest extends TestCase
 {
-    /**
-     * A basic test example.
-     *
-     * @return void
-     */
-    public function testBasicTest()
+    public function testTurnCsvIntoArray()
     {
-        $this->assertTrue(true);
-    }
+        $objDorota = new DorotasClass();
 
-    public function testSayHello()
-    {
-        $objProcessCsv = new ProcessCsv();
-        $hello = $objProcessCsv->sayHello();
+        //check empty
+        $arrCSVempty = $objDorota->turnCsvIntoArrayOfLines('tests/testFiles/empty.csv');
+        $emptyArr = array();
+        $this->assertSame($arrCSVempty, $emptyArr);
 
-        $this->assertTrue($hello === 'Hello');
     }
 }
