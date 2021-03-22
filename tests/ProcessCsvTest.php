@@ -16,5 +16,9 @@ class ProcessCsvTest extends TestCase
         $emptyArr = array();
         $this->assertSame($arrCSVempty, $emptyArr);
 
+        //check five lines file
+        $arrCSVfive = $objProcessCsv->turnCsvIntoArrayOfLines('tests/testFiles/fiveLines.csv');
+        $arrFiveLines = array('line one', 'line two', 'line three', 'line four', 'line five');
+        $this->assertSame($arrCSVfive, $arrFiveLines);
     }
 }
