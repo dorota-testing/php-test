@@ -60,13 +60,13 @@ class ProcessCsv
         "first_name" => null,
         "initial" => null,
         "last_name" => $arrExplode[1]
-      ]; 
+      ];
     }
 
     return $arrReturn;
   }
 
-    /**
+  /**
    *  @return array This returns array of two strings, each being one person string
    *  @param string - string with two person's data. Expected to contain word 'and' or '&'
    */
@@ -84,20 +84,25 @@ class ProcessCsv
       $title1 = $arrExplode[0];
       $title2 = $arrExplode[2];
       //case with husband's forename
-      if(isset($arrExplode[4])){
+      if (isset($arrExplode[4])) {
         $first_name = $arrExplode[3];
         $last_name = $arrExplode[4];
         $arrReturn = [
-          trim($title1.' '.$first_name.' '.$last_name),
-          trim($title2.' '.$last_name)
+          trim($title1 . ' ' . $first_name . ' ' . $last_name),
+          trim($title2 . ' ' . $last_name)
         ];
       } else { // case with only surname
         $last_name = $arrExplode[3];
         $arrReturn = [
-          trim($title1.' '.$last_name),
-          trim($title2.' '.$last_name)
+          trim($title1 . ' ' . $last_name),
+          trim($title2 . ' ' . $last_name)
         ];
       }
+    }
+    //case when 'and' is between people
+    if ($key > 1) {
+      $arrPeople = explode($arrExplode[$key], $string);
+      $arrReturn = [trim($arrPeople[0]), trim($arrPeople[1])];
     }
     return $arrReturn;
   }
