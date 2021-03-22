@@ -106,4 +106,20 @@ class ProcessCsv
     }
     return $arrReturn;
   }
+
+  /**
+   *  @return bool This true if string is two people and false if one
+   *  @param string - a string containing one or two people
+   */
+  public function detectMultiplePersons(string $string){
+    //check if contains 'and' or &
+    $arrExplode = explode(' ', $string);
+    $detected1 = in_array('and', $arrExplode);
+    $detected2 = in_array('&', $arrExplode);
+    if ($detected1 === true || $detected2 === true) {
+      return true;
+    } else {
+      return false;
+    }
+  }  
 }

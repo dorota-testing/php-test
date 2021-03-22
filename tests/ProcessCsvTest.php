@@ -89,7 +89,7 @@ class ProcessCsvTest extends TestCase
 
         $this->assertSame($arrSplitMultiple, $arrResult);
     }
-    
+
     /**
      * This sets data for next test
      */
@@ -116,7 +116,7 @@ class ProcessCsvTest extends TestCase
     public function testDetectMultiplePersons(string $string, bool $result)
     {
         $objProcessCsv = new ProcessCsv();
-        $result = $objProcessCsv->detectMultiplePersons($string);
-        $this->assertSame($string, $result);
+        $detected = $objProcessCsv->detectMultiplePersons($string);
+        $this->assertSame($detected, $result);
     }
 }
