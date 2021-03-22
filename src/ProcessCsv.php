@@ -2,7 +2,7 @@
 
 namespace Src;
 
-class DorotasClass {
+class ProcessCsv {
   public function sayHello(){
     return 'Hello';
   }

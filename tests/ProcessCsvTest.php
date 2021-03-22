@@ -3,9 +3,9 @@
 namespace Tests;
 
 use PHPUnit\Framework\TestCase;
-use Src\DorotasClass;
+use Src\ProcessCsv;
 
-class DorotasTest extends TestCase
+class ProcessCsvTest extends TestCase
 {
     /**
      * A basic test example.
@@ -19,8 +19,8 @@ class DorotasTest extends TestCase
 
     public function testSayHello()
     {
-        $objDorota = new DorotasClass();
-        $hello = $objDorota->sayHello();
+        $objProcessCsv = new ProcessCsv();
+        $hello = $objProcessCsv->sayHello();
 
         $this->assertTrue($hello === 'Hello');
     }
