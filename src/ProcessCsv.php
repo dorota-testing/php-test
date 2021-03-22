@@ -25,9 +25,34 @@ class ProcessCsv
     return $arrReturn;
   }
 
+  /**
+   *  @return array This returns array of person's data (keys: title, first_name, initial, last_name)
+   *  @param string - string with person's data. Expected to have at least two words. First is expected to be a title, lats to be a surname. If there is third word in the middle it has to be a forename (can be full or and initial).
+   */
   public function splitStringIntoPersonArray($string)
   {
     $arrReturn = [];
+    $arrExplode = explode(' ', $string);
+    //this is for three words in string
+    if (count($arrExplode) == 3) {
+      $title = $arrExplode[0];
+      $last_name = $arrExplode[2];
+      $first_name = null;
+      $initial = null;
+      //remove dot form middle word
+      $middle = str_replace(".", "", $arrExplode[1]);
+      if (strlen($middle) == 1) {
+        $initial = $middle;
+      } else {
+        $first_name = $middle;
+      }
+      $arrReturn = [
+        "title" => $title,
+        "first_name" => $first_name,
+        "initial" => $initial,
+        "last_name" => $last_name
+      ];
+    }
 
     return $arrReturn;
   }
