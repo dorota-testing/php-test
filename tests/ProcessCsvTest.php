@@ -89,4 +89,34 @@ class ProcessCsvTest extends TestCase
 
         $this->assertSame($arrSplitMultiple, $arrResult);
     }
+    
+    /**
+     * This sets data for next test
+     */
+    public function getCsvFileLine()
+    {
+        return [
+            [
+                'Mr and Mrs Smith', true
+            ],
+            [
+                'Mr Tom Staff and Mr John Doe', true
+            ],
+            [
+                'Mr John Smith', false
+            ],
+            [
+                'Mr J. Smith', false
+            ]
+        ];
+    }
+    /**
+     * @dataProvider getCsvFileLine
+     */
+    public function testDetectMultiplePersons(string $string, bool $result)
+    {
+        $objProcessCsv = new ProcessCsv();
+        $result = $objProcessCsv->detectMultiplePersons($string);
+        $this->assertSame($string, $result);
+    }
 }
