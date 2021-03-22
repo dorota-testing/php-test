@@ -121,5 +121,13 @@ class ProcessCsv
     } else {
       return false;
     }
+  } 
+
+  /**
+   *  @return array This returns array of arrays containing people's data
+   *  @param string - path to the csv file (including file name)
+   */
+  public function processCsvFile(string $csv_path){
+
   }  
 }
