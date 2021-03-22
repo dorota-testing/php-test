@@ -65,4 +65,14 @@ class ProcessCsv
 
     return $arrReturn;
   }
+
+    /**
+   *  @return array This returns array of two strings, each being one person string
+   *  @param string - string with two person's data. Expected to contain word 'and' or '&'
+   */
+  public function splitStringIntoMultiplePersons($string)
+  {
+    $arrReturn = [];
+    return $arrReturn;
+  }
 }
