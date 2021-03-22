@@ -64,4 +64,29 @@ class ProcessCsvTest extends TestCase
 
         $this->assertSame($arrSplit, $arrResult);
     }
+
+    /**
+     * This sets data for next test
+     */
+    public function getMultiplePersonStrings()
+    {
+        return [
+            [
+                'Mr and Mrs Smith', ['Mr Smith', 'Mrs Smith']
+            ],
+            [
+                'Mr Tom Staff and Mr John Doe', ['Mr Tom Staff', 'Mr John Doe']
+            ]
+        ];
+    }
+    /**
+     * @dataProvider getMultiplePersonStrings
+     */
+    public function testSplitStringIntoMultiplePersons(string $string, array $arrResult)
+    {
+        $objProcessCsv = new ProcessCsv();
+        $arrSplitMultiple = $objProcessCsv->splitStringIntoMultiplePersons($string);
+
+        $this->assertSame($arrSplitMultiple, $arrResult);
+    }
 }
