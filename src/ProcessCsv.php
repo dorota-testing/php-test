@@ -53,6 +53,15 @@ class ProcessCsv
         "last_name" => $last_name
       ];
     }
+    //this is for two words in string
+    if (count($arrExplode) == 2) {
+      $arrReturn = [
+        "title" => $arrExplode[0],
+        "first_name" => null,
+        "initial" => null,
+        "last_name" => $arrExplode[1]
+      ]; 
+    }
 
     return $arrReturn;
   }
