@@ -35,6 +35,22 @@ class ProcessCsvTest extends TestCase
                     'initial' => null,
                     'last_name' => 'Smith'
                 ]
+            ],
+            [
+                'Mr J. Smith', [
+                    'title' => 'Mr',
+                    'first_name' => null,
+                    'initial' => 'J',
+                    'last_name' => 'Smith'
+                ]
+            ],
+            [
+                'Mr Smith', [
+                    'title' => 'Mr',
+                    'first_name' => null,
+                    'initial' => null,
+                    'last_name' => 'Smith'
+                ]
             ]
         ];
     }
@@ -48,5 +64,4 @@ class ProcessCsvTest extends TestCase
 
         $this->assertSame($arrSplit, $arrResult);
     }
-
 }
