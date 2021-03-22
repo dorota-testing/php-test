@@ -24,4 +24,11 @@ class ProcessCsv
     }
     return $arrReturn;
   }
+
+  public function splitStringIntoPersonArray($string)
+  {
+    $arrReturn = [];
+
+    return $arrReturn;
+  }
 }
