@@ -9,10 +9,10 @@ class ProcessCsvTest extends TestCase
 {
     public function testTurnCsvIntoArray()
     {
-        $objDorota = new DorotasClass();
+        $objProcessCsv = new ProcessCsv();
 
         //check empty
-        $arrCSVempty = $objDorota->turnCsvIntoArrayOfLines('tests/testFiles/empty.csv');
+        $arrCSVempty = $objProcessCsv->turnCsvIntoArrayOfLines('tests/testFiles/empty.csv');
         $emptyArr = array();
         $this->assertSame($arrCSVempty, $emptyArr);
 
