@@ -140,6 +140,18 @@ class ProcessCsvTest extends TestCase
                 'first_name' => null,
                 'initial' => null,
                 'last_name' => 'Smith'
+            ],
+            [
+                'title' => 'Dr',
+                'first_name' => 'Joe',
+                'initial' => null,
+                'last_name' => 'Bloggs'
+            ],
+            [
+                'title' => 'Mrs',
+                'first_name' => null,
+                'initial' => null,
+                'last_name' => 'Bloggs'
             ]
         ];
 
